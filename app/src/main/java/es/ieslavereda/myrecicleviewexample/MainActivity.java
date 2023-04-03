@@ -1,5 +1,7 @@
 package es.ieslavereda.myrecicleviewexample;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.ItemTouchHelper;
@@ -11,12 +13,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
+    FloatingActionButton button_nuevoPerfil;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,8 +36,8 @@ public class MainActivity extends AppCompatActivity {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
 
-        ImageButton imageButton = findViewById(R.id.button_nuevoPerfil);
-        imageButton.setOnClickListener(new View.OnClickListener() {
+        button_nuevoPerfil = findViewById(R.id.button_nuevoPerfil);
+        button_nuevoPerfil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, FormularioActivity.class);
@@ -75,5 +80,15 @@ public class MainActivity extends AppCompatActivity {
 
         itemTouchHelper.attachToRecyclerView(recyclerView);
 
+        ActivityResultLauncher<Intent> someActitvityResultLauncher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                result -> {
+                    if(result.getResultCode()==RESULT_CANCELED)
+                        Toast.makeText(this, "Cancelado por el usuario", Toast.)
+                }
+        );
+
     }
+
+
 }

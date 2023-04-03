@@ -5,13 +5,13 @@ public class Usuario {
     private String nombre;
     private String apellidos;
     private String oficio;
-    private int imagen;
+    private int idProfesion;
 
-    public Usuario(String nombre, String apellidos, String oficio, int imagen) {
+    public Usuario(String nombre, String apellidos, int idProfesion) {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.oficio = oficio;
-        this.imagen = imagen;
+        this.idProfesion = idProfesion;
     }
 
     public String getNombre() {
@@ -30,19 +30,8 @@ public class Usuario {
         this.apellidos = apellidos;
     }
 
-    public String getOficio() {
-        return oficio;
+    public int getIdProfesion(){
+        return idProfesion;
     }
 
-    public void setOficio(String oficio) {
-        this.oficio = oficio;
-    }
-
-    public int getImagen() {
-        return imagen;
-    }
-
-    public void setImagen(int imagen) {
-        this.imagen = imagen;
-    }
 }

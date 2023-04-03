@@ -30,10 +30,11 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Usuario u = repository.getUsuario(position);
+        Profesion p = ProfesionRepository.getInstance().getProfesionByImage(u.getIdProfesion());
 
         holder.nombre.setText(u.getApellidos()+", " +u.getNombre());
-        holder.oficio.setText(u.getOficio());
-        holder.imagen.setImageResource(u.getImagen());
+        holder.oficio.setText(p.getNombre());
+        holder.imagen.setImageResource(p.getImage());
 
     }
 

@@ -52,7 +52,7 @@ public class FormularioActivity extends AppCompatActivity {
         ocupacion.add("Vendedor");
         ocupacion.add("Youtuber");
 
-        ArrayAdapter<String> myAdapter = new ArrayAdapter<>(this,android.R.layout.simple_spinner_item,ocupacion);
+        ArrayAdapter<Profesion> myAdapter = new ArrayAdapter<>(this,android.R.layout.simple_spinner_item,ProfesionRepository.getInstance().getAll());
         spinner.setAdapter(myAdapter);
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
